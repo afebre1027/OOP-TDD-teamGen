@@ -1,4 +1,3 @@
-const { test } = require("@jest/globals");
 const Employee = require("../lib/Employee");
 const employee = new Employee("Drew", "123456", "afebre1027@gmail.com");
 
@@ -9,17 +8,17 @@ test("Employees constructor values", () => {
 });
 
 test("test for getName() method", () => {
-  expect(employee.name).toBe("Drew");
+  expect(employee.getName()).toBe("Drew");
 });
 
 test("test for getEmail() method", () => {
-  expect(employee.email).toBe("afebre1027@gmail.com");
+  expect(employee.getEmail()).toBe("afebre1027@gmail.com");
 });
 
 test("test for getId() method", () => {
-  expect(employee.id).toBe("123456");
+  expect(employee.getId()).toBe("123456");
 });
 
 test("test for getRole() method", () => {
-  expect(employee.role).toBe(employee);
+  expect(employee.getRole()).toBe("Employee");
 });
