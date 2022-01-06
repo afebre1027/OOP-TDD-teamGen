@@ -1,0 +1,28 @@
+{
+  "name": "oop-tdd-teamgen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afebre1027/OOP-TDD-teamGen.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afebre1027/OOP-TDD-teamGen/issues"
+  },
+  "homepage": "https://github.com/afebre1027/OOP-TDD-teamGen#readme",
+  "devDependencies": {
+    "jess": "^1.0.8-alpha.8"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
+  }
+}
