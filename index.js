@@ -1,42 +1,13 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const generatePage = require("./page-template.js");
+
+const pageHTML = generatePage();
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 
-const path = require("path");
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const output = path.join(OUTPUT_DIR, "html.html");
-// const generateSite = require('./lib/generateSite');
-
 const teamMembers = [];
-
-const promptMenu = () => {
-  return inquirer
-    .prompt([
-      {
-        type: "list",
-        name: "menu",
-        message: "What employee class would you like to choice?",
-        choices: ["add Manager", "add Intern", "add Engineer", "finished"],
-      },
-    ])
-    .then((selectedChoice) => {
-      switch (selectedChoice.menu) {
-        case "add Manager":
-          promptManager();
-          break;
-        case "add Intern":
-          promptIntern();
-          break;
-        case "add Engineer":
-          promptEngineer();
-          break;
-        default:
-          promptAddMembers();
-      }
-    });
-};
 
 const promptManager = () => {
   return inquirer
@@ -70,11 +41,37 @@ const promptManager = () => {
         answers.officeNumber
       );
       teamMembers.push(manager);
-      promptMenu();
+      promptUser();
     });
 };
 
-
+const promptUser = () => {
+  return inquirer
+    .prompt([
+      {
+        type: "list",
+        name: "menu",
+        message: "What employee class would you like to choice?",
+        choices: ["add Manager", "add Intern", "add Engineer", "finished"],
+      },
+    ])
+    .then((selectedChoice) => {
+      switch (selectedChoice.menu) {
+        case "add Manager":
+          promptManager();
+          break;
+        case "add Intern":
+          promptIntern();
+          break;
+        case "add Engineer":
+          promptEngineer();
+          break;
+        default:
+          promptAddMembers();
+      }
+    });
+};
+promptUser().then((answers) => console.log(answers));
 
 const promptEngineer = () => {
   return inquirer
@@ -107,8 +104,8 @@ const promptEngineer = () => {
         answers.email,
         answers.github
       );
-      teams.push(engineer);
-      promptMenu();
+      teamMembers.push(engineer);
+      promptUser();
     });
 };
 
@@ -132,8 +129,8 @@ const promptIntern = () => {
       },
       {
         type: "input",
-        name: "officeNumber",
-        message: "Please enter your Email address!",
+        name: "github",
+        message: "Please enter your Github Username!",
       },
     ])
     .then((answers) => {
@@ -141,16 +138,28 @@ const promptIntern = () => {
         answers.name,
         answers.id,
         answers.email,
-        answers.school
+        answers.github
       );
       teamMembers.push(intern);
-      promptMenu();
+      promptUser();
     });
 };
 const promptAddMembers = () => {
-  console.log("team should be created");
-  if (!fs.existsSync(OUTPUT_DIR)) {
-    fs.writeFileSync(outputPath, generateSite(teamMembers), "utf8");
-  }
-  promptMenu();
+  fs.writeFile("./dist/page.html", pageHTML, (err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log("page created!")
+
+    fs.copyFile('./src/style.css', './dist/style.css', err => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      console.log("css created!")
+    })
+
+  });
 };
+console.log(generatePage());
