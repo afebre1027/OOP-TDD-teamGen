@@ -54,15 +54,15 @@ ${manager.name}
 
   // loop created for employees
 
-  // for (let i = 0; i < employee.length; i++) {
-  //   if (team[i].getRole() === "Manager") {
-  //     generateManager(team[i]);
-  //   } else if (team[i].getRole() === "Engineer") {
-  //     generateEngineer(team[i]);
-  //   } else if (team[i].getRole() === "Intern") {
-  //     generateIntern(team[i]);
-  //   }
-  // }
+  for (let i = 0; i < team.length; i++) {
+    if (team[i].getRole() === "Manager") {
+      generateManager(team[i]);
+    } else if (team[i].getRole() === "Engineer") {
+      generateEngineer(team[i]);
+    } else if (team[i].getRole() === "Intern") {
+      generateIntern(team[i]);
+    }
+  }
 
   //  join all together
 
@@ -70,7 +70,7 @@ ${manager.name}
 };
 
 module.exports = (team) => {
-  console.log(team);
+  console.log("this is my team", team);
   return `
   <!DOCTYPE html>
   <html lang="en">

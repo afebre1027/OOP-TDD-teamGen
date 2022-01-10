@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generatePage = require("./page-template.js");
 
-const pageHTML = generatePage();
+// const pageHTML = generatePage();
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
@@ -145,7 +145,8 @@ const promptIntern = () => {
     });
 };
 const promptAddMembers = () => {
-  fs.writeFile("./dist/page.html", pageHTML, (err) => {
+  const pageHtml = generatePage(teamMembers)
+  fs.writeFile("./dist/page.html", pageHtml, (err) => {
     if (err) {
       console.log(err);
       return;
@@ -162,4 +163,4 @@ const promptAddMembers = () => {
 
   });
 };
-console.log(generatePage());
+
