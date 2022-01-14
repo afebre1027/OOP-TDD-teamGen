@@ -15,17 +15,17 @@ const promptManager = () => {
       {
         type: "input",
         name: "name",
-        message: "Please enter your name!",
+        message: "Please enter Managers name!",
       },
       {
         type: "input",
         name: "id",
-        message: "Please enter your ID Number!",
+        message: "Please enter Managers ID#!",
       },
       {
         type: "input",
         name: "email",
-        message: "Please enter your Email address!",
+        message: "Please enter Managers Email address!",
       },
       {
         type: "input",
@@ -79,22 +79,22 @@ const promptEngineer = () => {
       {
         type: "input",
         name: "name",
-        message: "Please enter your name!",
+        message: "Please enter Engineers name!",
       },
       {
         type: "input",
         name: "id",
-        message: "Please enter your ID Number!",
+        message: "Please enter Engineers ID Number!",
       },
       {
         type: "input",
         name: "email",
-        message: "Please enter your Email address!",
+        message: "Please enter Engineers Email address!",
       },
       {
         type: "input",
         name: "github",
-        message: "Please enter your Github Username!",
+        message: "Please enter Engineers Github Username!",
       },
     ])
     .then((answers) => {
@@ -115,22 +115,22 @@ const promptIntern = () => {
       {
         type: "input",
         name: "name",
-        message: "Please enter your name!",
+        message: "Please enter Interns name!",
       },
       {
         type: "input",
         name: "id",
-        message: "Please enter your ID Number!",
+        message: "Please enter Interns ID Number!",
       },
       {
         type: "input",
         name: "email",
-        message: "Please enter your Email address!",
+        message: "Please enter Interns Email address!",
       },
       {
         type: "input",
-        name: "github",
-        message: "Please enter your Github Username!",
+        name: "school",
+        message: "Please enter the School you attend!",
       },
     ])
     .then((answers) => {
@@ -138,7 +138,7 @@ const promptIntern = () => {
         answers.name,
         answers.id,
         answers.email,
-        answers.github
+        answers.school,
       );
       teamMembers.push(intern);
       promptUser();
